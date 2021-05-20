@@ -30,7 +30,7 @@ function handleSubmit(event) {
   // Do all the things ...
   addSelectedItemToCart();
   cart.saveToLocalStorage();
-  // updateCounter();
+  updateCounter();
   updateCartPreview();
 
 }
@@ -49,29 +49,29 @@ function addSelectedItemToCart() {
 
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-// function updateCounter() {
-//   let count = 0
-//   for (let i of cart.items) {
-//     count += cart.items[i].quantity;
-//   }
-//   return count
-// }
+function updateCounter() {
+  let count = 0
+  for (let i=0; i<cart.items.length; i++) {
+    count = count + +Number(cart.items[i].quantity);
+  }
+  console.log(count)
+}
 
 
 
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
+// DONE: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
   const cartPreview = document.getElementById('cartContents');
+  cartPreview.innerHTML = '';
   const cartPreviewUl = document.createElement('ul')
   cartPreview.appendChild(cartPreviewUl)
   
-  cartPreview.innerHTML = '';
 
-  for (let i=0; cart.items.length; i++) {
+  for (let i=0; i<cart.items.length; i++) {
     const cartItem = document.createElement('li');
-    cartItem.textContent = cart.items[i].product;
+    cartItem.textContent = `${cart.items[i].product} x${cart.items[i].quantity}`;
     cartPreviewUl.appendChild(cartItem);
   }
 }
