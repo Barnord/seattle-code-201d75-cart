@@ -13,8 +13,8 @@ function loadCart() {
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
 function renderCart() {
-  // loadCart();
-  // clearCart();
+  loadCart();
+  clearCart();
   showCart();
 }
 
@@ -29,8 +29,8 @@ function showCart() {
   // DONE: Find the table body
     const body = document.getElementById("table");
     const tbody = document.getElementsByTagName('tbody')[0]; 
-    let delete = document.querySelector('');
-
+    // let delete = document.querySelector('');
+    tbody.innerHTML = ''
  // DONE: Iterate over the items in the cart
 
    for (let i = 0; i < cart.items.length; i++){
@@ -40,8 +40,9 @@ function showCart() {
 
  // DONE: Create a TD for the delete link, quantity,  and the item
      const nameTd = document.createElement('td');
-     nameTd.textContent = `${("#cart").remove}`; 
+     nameTd.textContent = `${cart.removeItem}`; 
      tr.appendChild(nameTd);
+     nameTd.addEventListener('click', removeItemFromCart);
      
      const nameTd2 = document.createElement('td');
      nameTd2.textContent = `${cart.items[i].quantity}`; 
@@ -58,10 +59,12 @@ function showCart() {
      
      function removeItemFromCart(event) {
        
-       // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
-       // TODO: Save the cart back to local storage
-       // TODO: Re-draw the cart table
+       // When a delete link is clicked, use cart.removeItem to remove the correct item
        
+       // DONE: Save the cart back to local storage
+       cart.saveToLocalStorage();
+       // TODO: Re-draw the cart table
+       showCart();
       }
        
 // This will initialize the page and draw the cart on screen
