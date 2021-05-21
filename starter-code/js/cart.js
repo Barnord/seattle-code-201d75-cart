@@ -3,6 +3,7 @@
 
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
 const table = document.getElementById('cart');
+const tbody = document.getElementsByTagName('tbody')[0]; 
 table.addEventListener('click', removeItemFromCart);
 let cart;
 
@@ -19,18 +20,17 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-// function clearCart() {
-//   $("#cart").remove();
-// }
+function clearCart() {
+  tbody.innerHTML = ''
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
   // DONE: Find the table body
     const body = document.getElementById("table");
-    const tbody = document.getElementsByTagName('tbody')[0]; 
     // let delete = document.querySelector('');
-    tbody.innerHTML = ''
+
  // DONE: Iterate over the items in the cart
 
    for (let i = 0; i < cart.items.length; i++){
@@ -39,16 +39,16 @@ function showCart() {
      tbody.appendChild(tr);
 
  // DONE: Create a TD for the delete link, quantity,  and the item
-     const nameTd = document.createElement('td');
-     nameTd.textContent = `${cart.removeItem}`; 
+     const nameTd = document.createElement('th');
+     nameTd.textContent = '(X)'; 
      tr.appendChild(nameTd);
      nameTd.addEventListener('click', removeItemFromCart);
      
-     const nameTd2 = document.createElement('td');
+     const nameTd2 = document.createElement('th');
      nameTd2.textContent = `${cart.items[i].quantity}`; 
      tr.appendChild(nameTd2);
      
-     const nameTd3 = document.createElement('td');
+     const nameTd3 = document.createElement('th');
      nameTd3.textContent = `${cart.items[i].product}`; 
      tr.appendChild(nameTd3);
     }
