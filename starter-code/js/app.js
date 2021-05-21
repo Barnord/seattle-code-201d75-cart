@@ -14,8 +14,8 @@ Cart.prototype.addItem = function(product, quantity) {
 
 Cart.prototype.saveToLocalStorage = function() {
   // DONE: Fill in this instance method to save the contents of the cart to localStorage
-  const stringifiedCart = JSON.stringify(Cart)
-  localStorage.setItem('cart', stringifiedCart)
+  const stringifiedCart = JSON.stringify(cart);
+  localStorage.setItem('cart', stringifiedCart);
 };
 
 Cart.prototype.removeItem = function(item) {
@@ -61,3 +61,4 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
+// module.exports = Cart;
